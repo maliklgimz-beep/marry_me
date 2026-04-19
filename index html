@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marry Me Proposal</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(45deg, pink, lightblue);
+            position: relative;
+        }
+        .heart {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            animation: float 5s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% {transform: translateY(0);}
+            50% {transform: translateY(-30px);}
+            100% {transform: translateY(0);}
+        }
+        .button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .yes {
+            background-color: green;
+        }
+        .no {
+            background-color: red;
+        }
+        .celebration {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div id="celebration" class="celebration">
+        🎉 Yes! Let's Celebrate! 🎊
+    </div>
+    <button class="button yes">YES</button>
+    <button class="button no">NO</button>
+    <script>
+        const yesButton = document.querySelector('.yes');
+        const noButton = document.querySelector('.no');
+        const celebration = document.getElementById('celebration');
+
+        yesButton.addEventListener('click', () => {
+            celebration.style.display = 'block';
+            setTimeout(() => {
+                celebration.style.display = 'none';
+            }, 3000);
+        });
+
+        noButton.addEventListener('click', () => {
+            window.location.href = 'https://your-escape-url.com';
+        });
+
+        function createHearts() {
+            for (let i = 0; i < 10; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+                document.body.appendChild(heart);
+            }
+        }
+        createHearts();
+    </script>
+</body>
+</html>
